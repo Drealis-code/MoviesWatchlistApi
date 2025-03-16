@@ -15,6 +15,17 @@ const app = express();
 // middlewares
 app.use(express.json());
 
+// Add root route handler here
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "Welcome to the Matrix",
+    endpoints: {
+      users: "/api/users",
+      movies: "/api/movies"
+    }
+  });
+});
+
 // routes
 app.use('/api/users', castRouter);
 app.use('/api/movies', bingeRouter);
